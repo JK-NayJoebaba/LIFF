@@ -13,17 +13,18 @@ async function main() {
   body.style.backgroundColor = '#000000';
 }
 
-btnShare.onclick = function(){
-  body.style.backgroundColor = '#000000';
-  if (!liff.isInClient()) {
-    if (!liff.isLoggedIn()) {
-      liff.login();
-    }
+main();
+
+if (!liff.isInClient()) {
+  if (!liff.isLoggedIn()) {
+    liff.login();
+    shareMsg();
   }
-  shareMsg();
 }
 
-main();
+btnShare.onclick = () => {
+  shareMsg();
+};
 
 async function shareMsg() {
   await liff.shareTargetPicker([
