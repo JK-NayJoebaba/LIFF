@@ -11,21 +11,19 @@ async function main() {
   // Initialize LIFF app)
   await liff.init({ liffId: '1656697705-2akLrXe4' });
   body.style.backgroundColor = '#000000';
-  btnShare.style.display = 'block';
+}
+
+btnShare.onclick = function(){
+  body.style.backgroundColor = '#000000';
+  if (!liff.isInClient()) {
+    if (!liff.isLoggedIn()) {
+      liff.login();
+    }
+  }
+  shareMsg();
 }
 
 main();
-
-if (!liff.isInClient()) {
-  if (!liff.isLoggedIn()) {
-    liff.login();
-    shareMsg();
-  }
-}
-
-btnShare.onclick = () => {
-  shareMsg();
-};
 
 async function shareMsg() {
   await liff.shareTargetPicker([
