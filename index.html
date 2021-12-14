@@ -7,14 +7,57 @@
       content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
     />
     <title>LIFF: @UFAMACAO</title>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   </head>
   <body id="body">
-    <script src="index.js"></script>
+    <div>
+      <button id="Share" onclick="myfunction(1)" type="button" class="btn btn-success">Share Click</button>
+    </div>
+
+    <script>
+      main()
+      async function main() {
+        await liff.init({ liffId: '1656697705-2akLrXe4' });
+        
+        if (!liff.isInClient()) {
+          if (!liff.isLoggedIn()) {
+            liff.login();
+            btnShare.style.background = "yellow";
+          }
+          else {
+            btnShare.style.background = "white";
+          }
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      var count = 0;
+
+      const btnShare = document.getElementById('Share');
+
+      function myfunction(x){
+          var x;
+
+          if(x == 1){
+              count = count+1;
+          }
+
+          if(count == 1){
+              btnShare.style.background = "red";
+          }
+          else if(count == 2){
+              btnShare.style.background = "green";
+              count = 0;
+              //shareMsg();
+          }
+      }
+
+
+
+    </script>
+
     
-    <section id="button">
-      <button id="btnShare">Share Click</button>
-    </section>
   </body>
 </html>

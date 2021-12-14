@@ -5,25 +5,20 @@ import './style.css';
 const body = document.getElementById('body');
 
 // Button elements
-const btnShare = document.getElementById('btnShare');
+let btnShare = document.querySelector('#btnShare')
 
 async function main() {
   // Initialize LIFF app)
-  await liff.init({ liffId: '1656697705-2akLrXe4' });
-  body.style.backgroundColor = '#000000';
+  btnShare.style.background = '#1594e5';
+  //await liff.init({ liffId: '1656697705-2akLrXe4' });
+  //body.style.backgroundColor = '#000000';
 }
 
-main();
-
-if (!liff.isInClient()) {
-  if (!liff.isLoggedIn()) {
-    liff.login();
-    shareMsg();
-  }
-}
+//main();
 
 btnShare.onclick = () => {
-  shareMsg();
+  body.style.background = url('https://sv1.picz.in.th/images/2021/12/13/6CiY61.jpg');
+  //shareMsg();
 };
 
 async function shareMsg() {
@@ -215,5 +210,5 @@ async function shareMsg() {
       },
     },
   ]);
-  liff.closeWindows();
+  //liff.closeWindows();
 }
